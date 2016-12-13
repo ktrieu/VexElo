@@ -59,6 +59,7 @@
             this.rankButton.TabIndex = 2;
             this.rankButton.Text = "Rank";
             this.rankButton.UseVisualStyleBackColor = true;
+            this.rankButton.Click += new System.EventHandler(this.rankButton_Click);
             // 
             // rankingDataGrid
             // 
@@ -66,6 +67,7 @@
             this.rankingDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.rankingDataGrid.Location = new System.Drawing.Point(16, 36);
             this.rankingDataGrid.Name = "rankingDataGrid";
+            this.rankingDataGrid.RowHeadersVisible = false;
             this.rankingDataGrid.Size = new System.Drawing.Size(565, 443);
             this.rankingDataGrid.TabIndex = 3;
             // 
