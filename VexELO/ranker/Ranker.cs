@@ -58,18 +58,15 @@ namespace VexELO.ranker
             //get actual points
             double redActual;
             double blueActual;
-            bool redWins;
             if (match.ScoreRed > match.ScoreBlue)
             {
                 //red wins
-                redWins = true;
                 redActual = 1;
                 blueActual = 0;
             }
             else
             {
                 //blue wins
-                redWins = false;
                 redActual = 0;
                 blueActual = 1;
             }
@@ -79,8 +76,8 @@ namespace VexELO.ranker
             double redEloChange = winMarginAdjust * K_FACTOR * (redActual - redExpected);
             double blueEloChange = winMarginAdjust * K_FACTOR * (blueActual- blueExpected);
             //apply to each alliance
-            ApplyEloChange(match.AllianceRed, redEloChange, redWins);
-            ApplyEloChange(match.AllianceBlue, blueEloChange, !redWins);
+            ApplyEloChange(match.AllianceRed, redEloChange);
+            ApplyEloChange(match.AllianceBlue, blueEloChange);
         }
 
         private double CalcAllianceElo(Alliance alliance)
@@ -88,22 +85,11 @@ namespace VexELO.ranker
             return teamElos[alliance.TeamCode1] + teamElos[alliance.TeamCode2];
         }
 
-        private void ApplyEloChange(Alliance alliance, double change, bool winningAlliance)
+        private void ApplyEloChange(Alliance alliance, double change)
         {
-            double eloPercent1 = 0;
-            double eloPercent2 = 0;
-            if (winningAlliance)
-            {
-                //apply changes based on percentage of total alliance elo
-                eloPercent1 = teamElos[alliance.TeamCode1] / (teamElos[alliance.TeamCode1] + teamElos[alliance.TeamCode2]);
-                eloPercent2 = teamElos[alliance.TeamCode2] / (teamElos[alliance.TeamCode1] + teamElos[alliance.TeamCode2]);
-            }
-            else
-            {
-                //invert percentages in a loss to punish bad performers
-                eloPercent2 = teamElos[alliance.TeamCode1] / (teamElos[alliance.TeamCode1] + teamElos[alliance.TeamCode2]);
-                eloPercent1 = teamElos[alliance.TeamCode2] / (teamElos[alliance.TeamCode1] + teamElos[alliance.TeamCode2]);
-            }
+            //apply changes based on percentage of total alliance elo
+            double eloPercent1 = teamElos[alliance.TeamCode1] / (teamElos[alliance.TeamCode1] + teamElos[alliance.TeamCode2]);
+            double eloPercent2 = teamElos[alliance.TeamCode2] / (teamElos[alliance.TeamCode1] + teamElos[alliance.TeamCode2]);
             teamElos[alliance.TeamCode1] += change * eloPercent1;
             teamElos[alliance.TeamCode2] += change * eloPercent2;
         }
