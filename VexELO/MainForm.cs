@@ -22,4 +22,14 @@ namespace VexELO
         public MainForm()
         {
             InitializeComponent();
+            vexDbApi = new VexDbApi();
+            ranker = new Ranker();
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            ranker.RankMatches(vexDbApi.GetMatchesBySku("RE-VRC-16-1264"));
+            var rankings = ranker.GetEloRankings();
+        }
+    }
+}
