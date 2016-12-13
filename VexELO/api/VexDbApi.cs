@@ -24,6 +24,10 @@ namespace VexELO.api
             List<Match> matches = new List<Match>();
             string response = Encoding.UTF8.GetString(client.DownloadData(MATCH_API_URL + string.Format("?sku={0}&round=2", sku)));
             JObject o = JObject.Parse(response);
+            if (!(bool)o["status"])
+            {
+                return null;
+            }
             JArray matchArray = (JArray)o["result"];
             foreach (JObject match in matchArray)
             {
