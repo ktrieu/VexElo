@@ -20,6 +20,11 @@ namespace VexELO.ranker
 
         public void RankMatches(IList<Match> matches)
         {
+            if (matches == null)
+            {
+                return;
+            }
+            teamElos.Clear();
             foreach (Match match in matches)
             {
                 RankMatch(match);
