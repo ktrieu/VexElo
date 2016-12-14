@@ -27,6 +27,11 @@ namespace VexELO.ranker
             teamElos.Clear();
             foreach (Match match in matches)
             {
+                //add any teams in the match if they're not present
+                AddTeamIfNotPresent(match.AllianceRed.TeamCode1);
+                AddTeamIfNotPresent(match.AllianceRed.TeamCode2);
+                AddTeamIfNotPresent(match.AllianceBlue.TeamCode1);
+                AddTeamIfNotPresent(match.AllianceBlue.TeamCode2);
                 if (match.Complete)
                 {
                     RankMatch(match);
@@ -46,11 +51,6 @@ namespace VexELO.ranker
 
         public void RankMatch(Match match)
         {
-            //add any teams in the match if they're not present
-            AddTeamIfNotPresent(match.AllianceRed.TeamCode1);
-            AddTeamIfNotPresent(match.AllianceRed.TeamCode2);
-            AddTeamIfNotPresent(match.AllianceBlue.TeamCode1);
-            AddTeamIfNotPresent(match.AllianceBlue.TeamCode2);
             //get elos for both alliances
             double redElo = CalcAllianceElo(match.AllianceRed);
             double blueElo = CalcAllianceElo(match.AllianceBlue);
