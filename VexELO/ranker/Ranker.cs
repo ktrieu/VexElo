@@ -27,7 +27,10 @@ namespace VexELO.ranker
             teamElos.Clear();
             foreach (Match match in matches)
             {
-                RankMatch(match);
+                if (match.Complete)
+                {
+                    RankMatch(match);
+                }
             }
         }
 
