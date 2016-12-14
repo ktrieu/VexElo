@@ -87,6 +87,10 @@ namespace VexELO
                 redWinChance.Text = winChances.Item1.ToString("F2") + "%";
                 blueWinChance.Text = winChances.Item2.ToString("F2") + "%";
             }
+            else
+            {
+                MessageBox.Show("Please enter valid team names.");
+            }
         }
     }
 }
