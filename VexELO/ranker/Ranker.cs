@@ -84,6 +84,11 @@ namespace VexELO.ranker
             ApplyEloChange(match.AllianceBlue, blueEloChange);
         }
 
+        public bool HasRanking(string teamCode)
+        {
+            return teamElos.ContainsKey(teamCode);
+        }
+
         private double CalcAllianceElo(Alliance alliance)
         {
             return teamElos[alliance.TeamCode1] + teamElos[alliance.TeamCode2];
