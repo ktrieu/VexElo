@@ -31,15 +31,18 @@ namespace VexELO
 
         private void InitRankingsTable()
         {
-            rankingDataGrid.ColumnCount = 2;
+            rankingDataGrid.ColumnCount = 3;
             rankingDataGrid.ReadOnly = true;
-            rankingDataGrid.Font = new Font(FontFamily.GenericMonospace, 32);
-            rankingDataGrid.Columns[0].Name = "Team Name";
-            rankingDataGrid.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            rankingDataGrid.Font = new Font(FontFamily.GenericMonospace, 24);
+            rankingDataGrid.Columns[0].Name = "Rank";
+            rankingDataGrid.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             rankingDataGrid.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            rankingDataGrid.Columns[1].Name = "Elo Rating";
+            rankingDataGrid.Columns[1].Name = "Team Name";
             rankingDataGrid.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             rankingDataGrid.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            rankingDataGrid.Columns[2].Name = "Elo";
+            rankingDataGrid.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            rankingDataGrid.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -55,9 +58,11 @@ namespace VexELO
             {
                 return;
             }
+            int index = 1;
             foreach (var ranking in rankings)
             {
-                rankingDataGrid.Rows.Add(new object[] { ranking.Key, (int)ranking.Value });
+                rankingDataGrid.Rows.Add(new object[] { index, ranking.Key, (int)ranking.Value });
+                index++;
             }
             rankingDataGrid.AutoResizeRows();
         }
