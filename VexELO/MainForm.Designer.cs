@@ -163,7 +163,7 @@
             this.blueTeam2.Location = new System.Drawing.Point(460, 50);
             this.blueTeam2.Name = "blueTeam2";
             this.blueTeam2.Size = new System.Drawing.Size(100, 20);
-            this.blueTeam2.TabIndex = 6;
+            this.blueTeam2.TabIndex = 7;
             // 
             // label5
             // 
@@ -179,7 +179,7 @@
             this.blueTeam1.Location = new System.Drawing.Point(354, 50);
             this.blueTeam1.Name = "blueTeam1";
             this.blueTeam1.Size = new System.Drawing.Size(100, 20);
-            this.blueTeam1.TabIndex = 7;
+            this.blueTeam1.TabIndex = 6;
             // 
             // label6
             // 
@@ -198,6 +198,7 @@
             this.predictButton.TabIndex = 10;
             this.predictButton.Text = "Predict";
             this.predictButton.UseVisualStyleBackColor = true;
+            this.predictButton.Click += new System.EventHandler(this.predictButton_Click);
             // 
             // label7
             // 
@@ -222,14 +223,16 @@
             // 
             // blueWinChance
             // 
-            this.blueWinChance.AutoSize = true;
+            this.blueWinChance.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.blueWinChance.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.blueWinChance.ForeColor = System.Drawing.Color.Blue;
-            this.blueWinChance.Location = new System.Drawing.Point(499, 73);
+            this.blueWinChance.Location = new System.Drawing.Point(354, 73);
             this.blueWinChance.Name = "blueWinChance";
-            this.blueWinChance.Size = new System.Drawing.Size(63, 37);
+            this.blueWinChance.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.blueWinChance.Size = new System.Drawing.Size(206, 37);
             this.blueWinChance.TabIndex = 13;
             this.blueWinChance.Text = "0%";
+            this.blueWinChance.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // MainForm
             // 
