@@ -84,6 +84,19 @@ namespace VexELO.ranker
             ApplyEloChange(match.AllianceBlue, blueEloChange);
         }
 
+        public Tuple<double, double> CalcWinChances(Alliance red, Alliance blue)
+        {
+            //get elos for both alliances
+            double redElo = CalcAllianceElo(red);
+            double blueElo = CalcAllianceElo(blue);
+            double redEloTransformed = Math.Pow(10, redElo / 400);
+            double blueEloTransformed = Math.Pow(10, blueElo / 400);
+            //get expected points
+            double redExpected = redEloTransformed / (redEloTransformed + blueEloTransformed);
+            double blueExpected = blueEloTransformed / (redEloTransformed + blueEloTransformed);
+            return new Tuple<double, double>(redExpected * 100, blueExpected * 100);
+        }
+
         public bool HasRanking(string teamCode)
         {
             return teamElos.ContainsKey(teamCode);
