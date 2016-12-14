@@ -46,10 +46,11 @@ namespace VexELO.ranker
 
         public void RankMatch(Match match)
         {
-            CheckTeamExists(match.AllianceRed.TeamCode1);
-            CheckTeamExists(match.AllianceRed.TeamCode2);
-            CheckTeamExists(match.AllianceBlue.TeamCode1);
-            CheckTeamExists(match.AllianceBlue.TeamCode2);
+            //add any teams in the match if they're not present
+            AddTeamIfNotPresent(match.AllianceRed.TeamCode1);
+            AddTeamIfNotPresent(match.AllianceRed.TeamCode2);
+            AddTeamIfNotPresent(match.AllianceBlue.TeamCode1);
+            AddTeamIfNotPresent(match.AllianceBlue.TeamCode2);
             //get elos for both alliances
             double redElo = CalcAllianceElo(match.AllianceRed);
             double blueElo = CalcAllianceElo(match.AllianceBlue);
@@ -103,7 +104,7 @@ namespace VexELO.ranker
             return Math.Log(margin + 1);    
         }
 
-        private void CheckTeamExists(string teamCode)
+        private void AddTeamIfNotPresent(string teamCode)
         {
             if (!teamElos.ContainsKey(teamCode))
             {
