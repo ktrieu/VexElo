@@ -58,6 +58,7 @@ namespace VexELO
             {
                 return;
             }
+            rankingDataGrid.Rows.Clear();
             int index = 1;
             foreach (var ranking in rankings)
             {
