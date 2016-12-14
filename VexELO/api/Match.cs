@@ -6,5 +6,5 @@
     public int ScoreRed { get; set; }
     public int ScoreBlue { get; set; }
 
-    public bool InProgress { get; set; }
+    public bool Complete { get; set; }
 }

@@ -41,12 +41,12 @@ namespace VexELO.api
             Match match = new Match();
             if ((int)json["scored"] == 0)
             {
-                match.InProgress = false;
+                match.Complete = false;
                 return match;
             }
             else
             {
-                match.InProgress = true;
+                match.Complete = true;
                 match.ScoreRed = (int)json["redscore"];
                 match.ScoreBlue = (int)json["bluescore"];
                 Alliance allianceRed = new Alliance();
