@@ -75,5 +75,18 @@ namespace VexELO
                 PopulateRankingTable(skuField.Text);
             }
         }
+
+        private void predictButton_Click(object sender, EventArgs e)
+        {
+            //validate teams
+            if (ranker.HasRanking(redTeam1.Text) && ranker.HasRanking(redTeam2.Text) &&
+                ranker.HasRanking(blueTeam1.Text) && ranker.HasRanking(blueTeam2.Text))
+            {
+                Tuple<double, double> winChances = ranker.CalcWinChances(new Alliance(redTeam1.Text, redTeam2.Text),
+                    new Alliance(blueTeam1.Text, blueTeam2.Text));
+                redWinChance.Text = winChances.Item1.ToString("F2") + "%";
+                blueWinChance.Text = winChances.Item2.ToString("F2") + "%";
+            }
+        }
     }
 }
