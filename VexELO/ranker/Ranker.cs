@@ -11,7 +11,7 @@ namespace VexELO.ranker
 
         Dictionary<string, double> teamElos;
 
-        const int K_FACTOR = 512;
+        const int K_FACTOR = 32;
 
         public Ranker()
         {
