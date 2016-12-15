@@ -61,7 +61,7 @@ namespace VexELO.api
                 //repeat for blue
                 Alliance allianceBlue = new Alliance();
                 List<string> blueTeams = new List<string> { (string)json["blue1"], (string)json["blue2"], (string)json["blue3"] };
-                redTeams.Remove((string)json["bluesit"]);
+                blueTeams.Remove((string)json["bluesit"]);
                 allianceBlue.TeamCode1 = blueTeams[0];
                 allianceBlue.TeamCode2 = blueTeams[1];
                 match.AllianceBlue = allianceBlue;
