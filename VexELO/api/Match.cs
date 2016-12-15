@@ -1,4 +1,4 @@
-﻿struct Match
+﻿public struct Match
 {
     public Alliance AllianceRed { get; set; }
     public Alliance AllianceBlue { get; set; }

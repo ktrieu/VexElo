@@ -8,7 +8,7 @@ using System.Text;
 
 namespace VexELO.api
 {
-    class VexDbApi
+    public class VexDbApi
     {
         WebClient client;
 

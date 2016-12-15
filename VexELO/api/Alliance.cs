@@ -1,4 +1,4 @@
-﻿struct Alliance
+﻿public struct Alliance
 {
 
     public Alliance(string teamCode1, string teamCode2)

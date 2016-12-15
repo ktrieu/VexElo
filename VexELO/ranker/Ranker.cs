@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VexELO.ranker
 {
-    class Ranker
+    public class Ranker
     {
 
         Dictionary<string, double> teamElos;
