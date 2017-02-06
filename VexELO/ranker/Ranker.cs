@@ -129,7 +129,7 @@ namespace VexELO.ranker
 
         private void AddTeamIfNotPresent(string teamCode)
         {
-            if (!teamElos.ContainsKey(teamCode))
+            if (teamCode != null && !teamElos.ContainsKey(teamCode))
             {
                 //1500 is the default starting elo value
                 teamElos.Add(teamCode, 1500);
